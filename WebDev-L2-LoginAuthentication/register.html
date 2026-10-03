@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body data-page="register">
+  <main class="card">
+    <h1>Create your account</h1>
+    <p class="sub">Choose a username or use your email.</p>
+
+    <div id="message" class="message" role="alert"></div>
+
+    <form id="register-form" novalidate>
+      <label for="identifier">Username or email</label>
+      <input id="identifier" type="text" autocomplete="username" placeholder="username or you@example.com" maxlength="60">
+
+      <label for="password">Password</label>
+      <div class="pw-wrap">
+        <input id="password" type="password" autocomplete="new-password" placeholder="At least 8 characters">
+        <button type="button" class="toggle" data-toggle="password" aria-label="Show or hide password">Show</button>
+      </div>
+      <p class="hint">Minimum 8 characters, including at least 1 number.</p>
+
+      <label for="confirm">Confirm password</label>
+      <div class="pw-wrap">
+        <input id="confirm" type="password" autocomplete="new-password" placeholder="Repeat your password">
+        <button type="button" class="toggle" data-toggle="confirm" aria-label="Show or hide password">Show</button>
+      </div>
+
+      <button type="submit" class="btn" id="submit-btn">Register</button>
+    </form>
+
+    <p class="switch">Already have an account? <a href="index.html">Login</a></p>
+  </main>
+  <script src="auth.js"></script>
+</body>
+</html>

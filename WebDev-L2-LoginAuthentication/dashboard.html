@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<!-- Hidden until the session check passes, so logged-out visitors never see protected content -->
+<body data-page="dashboard" class="guarded">
+  <main class="card wide">
+    <div class="dash-head">
+      <div>
+        <p class="eyebrow">Protected area</p>
+        <h1>Hello, <span id="user-name"></span> 👋</h1>
+      </div>
+      <button type="button" class="btn btn-ghost" id="logout-btn">Logout</button>
+    </div>
+
+    <p class="sub">You are logged in. Only authenticated users can see this page.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-label">Account</span>
+        <span class="stat-value" id="user-id"></span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Member since</span>
+        <span class="stat-value" id="user-since"></span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Session ends in</span>
+        <span class="stat-value" id="session-timer"></span>
+      </div>
+    </div>
+  </main>
+  <script src="auth.js"></script>
+</body>
+</html>

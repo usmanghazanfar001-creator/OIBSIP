@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marie Curie A Tribute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,800;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night: #14213d;
+      --night-soft: #1f2f55;
+      --glow: #7CFC9B;
+      --gold: #e9b44c;
+      --paper: #faf6ee;
+      --ink: #26283a;
+      --muted: #5d6178;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.75;
+    }
+
+    h1, h2, h3, blockquote, .serif {
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    }
+
+    .wrap { width: min(1080px, 92%); margin-inline: auto; }
+
+    /* ---------- Hero (dark background) ---------- */
+    .hero {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(124, 252, 155, 0.18), transparent 45%),
+        linear-gradient(160deg, var(--night), var(--night-soft));
+      color: #fff;
+      padding: 72px 0 80px;
+    }
+
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: var(--glow);
+      font-weight: 600;
+      margin: 0 0 14px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      line-height: 1.08;
+      margin: 0 0 18px;
+      font-weight: 800;
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      color: #d6dbf0;
+      margin: 0 0 8px;
+      max-width: 34ch;
+    }
+
+    .dates { color: var(--gold); font-weight: 500; margin: 0; }
+
+    figure { margin: 0; }
+
+    .portrait {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 18px;
+      border: 6px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 0 0 2px var(--glow), 0 24px 60px rgba(0, 0, 0, 0.5);
+      background: var(--night-soft);
+    }
+
+    figcaption {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #aab1d1;
+      text-align: center;
+    }
+
+    figcaption a { color: var(--glow); }
+
+    /* ---------- Sections ---------- */
+    section { padding: 72px 0; }
+
+    h2 {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      margin: 0 0 8px;
+      color: var(--night);
+    }
+
+    .rule {
+      width: 64px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 4px;
+      margin: 0 0 32px;
+    }
+
+    .bio p { max-width: 70ch; font-size: 1.06rem; margin: 0 0 1.2em; }
+
+    .bio p:first-of-type::first-letter {
+      font-family: "Playfair Display", Georgia, serif;
+      float: left;
+      font-size: 4.2rem;
+      line-height: 0.85;
+      padding: 6px 12px 0 0;
+      color: var(--night);
+      font-weight: 800;
+    }
+
+    /* ---------- Quote (different background) ---------- */
+    .quote-band {
+      background: linear-gradient(135deg, var(--gold), #f3cf86);
+      padding: 64px 0;
+    }
+
+    blockquote {
+      margin: 0 auto;
+      max-width: 800px;
+      text-align: center;
+      color: var(--night);
+      font-size: clamp(1.6rem, 3.6vw, 2.5rem);
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.35;
+      position: relative;
+      padding-top: 38px;
+    }
+
+    blockquote::before {
+      content: "\201C";
+      position: absolute;
+      top: -26px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 6rem;
+      line-height: 1;
+      color: rgba(20, 33, 61, 0.35);
+    }
+
+    blockquote cite {
+      display: block;
+      margin-top: 18px;
+      font-family: "Inter", sans-serif;
+      font-size: 0.95rem;
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--night-soft);
+    }
+
+    /* ---------- Timeline (ordered list) ---------- */
+    .timeline-section { background: #fff; }
+
+    ol.timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 34px;
+      border-left: 3px solid var(--gold);
+      counter-reset: step;
+    }
+
+    ol.timeline li {
+      position: relative;
+      padding: 0 0 30px 22px;
+      counter-increment: step;
+    }
+
+    ol.timeline li::before {
+      content: counter(step);
+      position: absolute;
+      left: -57px;
+      top: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--night);
+      color: var(--glow);
+      display: grid;
+      place-items: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+
+    .year {
+      display: inline-block;
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--night);
+    }
+
+    ol.timeline p { margin: 2px 0 0; color: var(--muted); max-width: 62ch; }
+
+    /* ---------- Achievement cards ---------- */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 26px 22px;
+      border-top: 5px solid var(--night);
+      box-shadow: 0 8px 26px rgba(20, 33, 61, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover { transform: translateY(-6px); box-shadow: 0 14px 34px rgba(20, 33, 61, 0.18); }
+
+    .card .badge { font-size: 2rem; display: block; margin-bottom: 8px; }
+    .card h3 { margin: 0 0 6px; font-size: 1.2rem; color: var(--night); }
+    .card p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: var(--night);
+      color: #aab1d1;
+      text-align: center;
+      padding: 34px 0;
+      font-size: 0.9rem;
+    }
+
+    footer a { color: var(--glow); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 800px) {
+      .hero { padding: 48px 0 56px; }
+      .hero .wrap { grid-template-columns: 1fr; gap: 34px; }
+      .portrait { max-width: 380px; margin-inline: auto; display: block; }
+      section { padding: 52px 0; }
+      ol.timeline { padding-left: 30px; }
+      ol.timeline li { padding-left: 18px; }
+      ol.timeline li::before { left: -52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">A Tribute To</p>
+        <h1>Marie Curie</h1>
+        <p class="tagline">She followed an invisible glow and changed science forever.</p>
+        <p class="dates">1867 – 1934</p>
+      </div>
+
+      <figure>
+        <img class="portrait"
+             src="marie-curie.png"
+             alt="Portrait photograph of Marie Curie from the 1920s"
+             loading="eager">
+        <figcaption>
+          Marie Curie, c. 1920s — public-domain photograph via
+          <a href="https://commons.wikimedia.org/wiki/File:Marie_Curie_c._1920s.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>
+        </figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <main>
+    <section class="bio">
+      <div class="wrap">
+        <h2>The Woman Behind the Glow</h2>
+        <div class="rule"></div>
+
+        <p>Maria Skłodowska was born in Warsaw in 1867, at a time when Poland was under foreign rule and women were shut out of university classrooms. Curious from childhood and gifted with a remarkable memory, she studied in secret and worked as a tutor to help pay for her sister's medical studies, trusting that her own turn would come.</p>
+
+        <p>That turn came in 1891, when she moved to Paris and enrolled at the Sorbonne. She lived on very little, studied late into the night, and earned degrees in physics and mathematics. There she met Pierre Curie, a fellow physicist who treated her not as a helper but as an equal. Their marriage became one of the great partnerships in scientific history.</p>
+
+        <p>Together they chased a puzzle: why did certain minerals give off mysterious rays? Marie gave the phenomenon its name, "radioactivity", and showed that it came from within the atoms themselves, an idea that overturned how scientists thought about matter. In a leaking shed that served as their laboratory, they processed tonnes of ore by hand and isolated two new elements, polonium and radium. Marie named polonium after her homeland.</p>
+
+        <p>Even after Pierre's sudden death in 1906, she carried on. She took over his professorship and became the first woman to teach at the Sorbonne. During the First World War she helped equip vehicles with X-ray machines so that surgeons could find bullets and shrapnel near the front lines, and she drove some of them herself. Her work saved countless soldiers, and the radioactivity research she began continues to guide cancer treatment today.</p>
+
+        <p>Marie Curie's legacy is not only in the elements she discovered. It lives in every woman who walks into a laboratory that once would have turned her away, and in the simple idea that patient, stubborn curiosity can light up the world.</p>
+      </div>
+    </section>
+
+    <div class="quote-band">
+      <div class="wrap">
+        <blockquote>
+          Nothing in life is to be feared, it is only to be understood.
+          <cite>— Marie Curie</cite>
+        </blockquote>
+      </div>
+    </div>
+
+    <section class="timeline-section">
+      <div class="wrap">
+        <h2>A Life in Milestones</h2>
+        <div class="rule"></div>
+
+        <ol class="timeline">
+          <li>
+            <span class="year">1867</span>
+            <p>Born Maria Skłodowska in Warsaw on 7 November, the youngest of five children in a family of teachers.</p>
+          </li>
+          <li>
+            <span class="year">1891</span>
+            <p>Moves to Paris to study physics and mathematics at the Sorbonne.</p>
+          </li>
+          <li>
+            <span class="year">1895</span>
+            <p>Marries physicist Pierre Curie, beginning a lifelong scientific partnership.</p>
+          </li>
+          <li>
+            <span class="year">1898</span>
+            <p>Announces the discovery of two new elements, polonium and radium.</p>
+          </li>
+          <li>
+            <span class="year">1903</span>
+            <p>Shares the Nobel Prize in Physics with Pierre Curie and Henri Becquerel, becoming the first woman to win a Nobel Prize.</p>
+          </li>
+          <li>
+            <span class="year">1906</span>
+            <p>After Pierre's death, becomes the first female professor at the Sorbonne.</p>
+          </li>
+          <li>
+            <span class="year">1911</span>
+            <p>Wins the Nobel Prize in Chemistry for isolating radium and studying its properties.</p>
+          </li>
+          <li>
+            <span class="year">1914–1918</span>
+            <p>Develops mobile X-ray units for military hospitals and trains others to operate them.</p>
+          </li>
+          <li>
+            <span class="year">1934</span>
+            <p>Dies on 4 July in France, most likely from illness caused by years of exposure to radiation.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Key Achievements</h2>
+        <div class="rule"></div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="badge" aria-hidden="true"></span>
+            <h3>Two Nobel Prizes</h3>
+            <p>The first person to win Nobel Prizes in two different sciences: physics and chemistry.</p>
+          </article>
+          <article class="card">
+            <span class="badge" aria-hidden="true"></span>
+            <h3>Radioactivity</h3>
+            <p>Coined the term and proved it is a property of atoms themselves.</p>
+          </article>
+          <article class="card">
+            <span class="badge" aria-hidden="true"></span>
+            <h3>Two New Elements</h3>
+            <p>Discovered polonium and radium, and isolated pure radium.</p>
+          </article>
+          <article class="card">
+            <span class="badge" aria-hidden="true"></span>
+            <h3>Battlefield X-rays</h3>
+            <p>Helped bring mobile X-ray units to the front lines in World War I.</p>
+          </article>
+          <article class="card">
+            <span class="badge" aria-hidden="true"></span>
+            <h3>Door Opener</h3>
+            <p>First woman professor at the Sorbonne, and an inspiration to generations of scientists.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Made as a tribute to Marie Curie (1867–1934). Written in my own words from public biographical sources such as Britannica and Wikipedia.</p>
+      <p>Photo: Wikimedia Commons, public domain.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

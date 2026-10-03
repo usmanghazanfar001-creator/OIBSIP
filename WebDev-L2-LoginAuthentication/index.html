@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body data-page="login">
+  <main class="card">
+    <h1>Welcome back</h1>
+    <p class="sub">Log in to open your dashboard.</p>
+
+    <div id="message" class="message" role="alert"></div>
+
+    <form id="login-form" novalidate>
+      <label for="identifier">Username or email</label>
+      <input id="identifier" type="text" autocomplete="username" placeholder="username or you@example.com">
+
+      <label for="password">Password</label>
+      <div class="pw-wrap">
+        <input id="password" type="password" autocomplete="current-password" placeholder="Your password">
+        <button type="button" class="toggle" data-toggle="password" aria-label="Show or hide password">Show</button>
+      </div>
+
+      <button type="submit" class="btn" id="submit-btn">Login</button>
+    </form>
+
+    <p class="switch">No account yet? <a href="register.html">Register here</a></p>
+  </main>
+  <script src="auth.js"></script>
+</body>
+</html>
